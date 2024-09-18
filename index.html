@@ -4,22 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convert Table to Fixed Length File</title>
-    <script src="export-data.js"></script>
+    <script type="module" src="main.js"></script>
     <link rel="stylesheet" href=" main-style.css">
 </head>
 <body>
     <h1>Convert Table to Fixed Length File</h1>
     <label for="comboBox">Select batch:</label>
-    <select id="comboBox" onchange="handleComboBoxChange()">
-        <option value="" >Please Select</option>
-        <option value="alsUtilization">ALS Utilization</option>
-        <option value="alsClosedAccount">ALS Closed Account</option>
-        <option value="alsEndorser">ALS Endorser Creation</option>
-        <option value="alsSynchronization">ALS Synchronization</option>
-        <option value="stimReversal">STIM Utilization Reversal</option>
-		<option value="tiUtilization">TI Utilization</option>
-		<option value="tiSynchronization">TI Synchronization</option>
-    </select>
+    <select id="comboBox"></select>
+    <div id="dropdown-container"></div>
     <br />
     <br />
     <table id="dataTable" border="1">
@@ -31,9 +23,9 @@
         </tbody>
     </table>
     <br />
-    <button onclick="addRow()">Add Row</button>
-    <button onclick="convertTableToFixedLength()">Convert to Fixed Length File</button>
-	<button onclick="convertTableToCSV()">Convert to CSV</button>
+    <button id="addRowBtn">Add Row</button>
+    <button id="convertFixedLengthBtn">Convert to Fixed Length File</button>
+	<button id="convertCSVBtn">Convert to CSV</button>
     <a id="downloadLink" style="display: none;">Download File</a>
 </body>
 </html>

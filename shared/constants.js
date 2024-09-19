@@ -37,7 +37,7 @@ batch2Trailer.set(ALS_SYNCHRONIZATION_KEY, formatDate(new Date()) + '00000000050
 export const batch2Separator = new Map();
 batch2Separator.set(TI_SYNCHRONIZATION_KEY, SEPARATOR_01);
 batch2Separator.set(TI_UTILIZATION_KEY, SEPARATOR_01);
-batch2Separator.set(ALS_UTILIZATION_KEY, SEPARATOR_01);
+batch2Separator.set(ALS_UTILIZATION_KEY, SEPARATOR_02);
 
 // config columns
 export const batch2Columns = new Map();

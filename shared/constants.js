@@ -1,5 +1,8 @@
 import {formatDate} from "./shared-functions.js";
 
+export const SEPARATOR_01 = '~';
+export const SEPARATOR_02 = '|';
+
 export const batch2Header = { // header is optional
     'alsUtilization': 'ALSUTIL',
     'tiUtilization': 'TRUTPUSH',
@@ -9,14 +12,15 @@ export const batch2Header = { // header is optional
     'alsEndorser':'ALSENDO'
 };
 export const batch2Trailer = { // trailer is optional
-    'alsUtilization': formatDate(new Date()) + '0000000003000000003150000.00',
-    'tiUtilization': '     ~' + formatDate(new Date()) + '~' + '1' + '~' + '4220.00',
+    'alsUtilization': formatDate(new Date()) + SEPARATOR_01 + '1' + SEPARATOR_01 + '000000000500500.00',
+    'tiUtilization': '     ' + SEPARATOR_01 + formatDate(new Date()) + SEPARATOR_01 + '1' + SEPARATOR_01 + '4220.00',
     'alsClosedAccount': formatDate(new Date()) + '0000000003000000003150000.00',
     'alsSynchronization':formatDate(new Date()) + '000000000500500.00',
 }
 export const batch2Separator = {
-    'tiSynchronization': '~',
-    'tiUtilization': '~'
+    'tiSynchronization': SEPARATOR_01,
+    'tiUtilization': SEPARATOR_01,
+    'alsUtilization': SEPARATOR_01
 }
 
 export const optionsArray = [
@@ -40,7 +44,7 @@ export const batch2Columns = {
         { name: 'res_customer_id', length: 10 },
         { name: 'res_facility_id', length: 14 },
         { name: 'res_loan_acno', length: 26 },
-        { name: 'res_tran_status', length: 1 },
+        { name: 'res_tran_status', length: 4 },
         { name: 'res_loan_curr', length: 3 },
         { name: 'res_loan_amt', length: 16 },
         { name: 'res_maker_id', length: 10 },

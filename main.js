@@ -1,4 +1,8 @@
-import {batch2Header, batch2Trailer, batch2Separator, batch2Columns, optionsArray} from "./constants.js";
+import {batch2Columns, optionsArray} from "./shared/constants.js";
+import {convertTableToFixedLength} from "./convert/convert-table-to-fixed-length-file.js";
+import {convertTableToCSV} from "./convert/convert-table-to-csv-file.js";
+
+let columns = batch2Columns[''];
 
 export function initializeSelectBox() {
     // Step 1: Create a <select> element
@@ -13,8 +17,6 @@ export function initializeSelectBox() {
     });
 
 }
-
-let columns = batch2Columns[''];
 
 // Function to initialize table header based on columns array
 export function initializeTable() {
@@ -54,77 +56,6 @@ export function addRow(data = []) {
         }
         newCell.appendChild(input);
     });
-}
-
-// Function to pad string to fixed length
-export function padString(str, length) {
-    return str.padEnd(length, ' ');
-}
-
-export function convertTableToCSV() {
-    const comboBox = document.getElementById('comboBox');
-    const selectedValue = comboBox.value;
-
-    const table = document.getElementById('dataTable');
-    const rows = table.getElementsByTagName('tr');
-    let csvText = '';
-    if (batch2Header[selectedValue]) {
-        csvText += batch2Header[selectedValue] + '\n'
-    }
-
-    for (let i = 1; i < rows.length; i++) { // Start from 1 to skip the header row
-        const inputs = rows[i].getElementsByTagName('input');
-        for (let j = 0; j < inputs.length; j++) {
-            csvText += inputs[j].value + batch2Separator[selectedValue] || '~';
-        }
-        csvText = csvText.substring(0, csvText.length - 1);
-        csvText += '\n';
-    }
-
-    if (batch2Trailer[selectedValue]) {
-        csvText += batch2Trailer[selectedValue] + '\n';
-    }
-
-    // Create a blob and generate a download link
-    const blob = new Blob([csvText], { type: 'text/plain' });
-    const link = document.getElementById('downloadLink');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'csv.txt';
-    link.style.display = 'block';
-    link.innerText = 'Download CSV';
-}
-
-// Function to convert table to fixed length file
-export function convertTableToFixedLength() {
-    const comboBox = document.getElementById('comboBox');
-    const selectedValue = comboBox.value;
-
-    const table = document.getElementById('dataTable');
-    const rows = table.getElementsByTagName('tr');
-    let fixedLengthText = '';
-    if (batch2Header[selectedValue]) {
-        fixedLengthText += batch2Header[selectedValue] + '\n'
-    }
-
-    for (let i = 1; i < rows.length; i++) { // Start from 1 to skip the header row
-        const inputs = rows[i].getElementsByTagName('input');
-        for (let j = 0; j < inputs.length; j++) {
-            fixedLengthText += padString(inputs[j].value, columns[j].length);
-        }
-        fixedLengthText += '\n';
-    }
-
-    if (batch2Trailer[selectedValue]) {
-        fixedLengthText += batch2Trailer[selectedValue] + '\n';
-    }
-
-    // Create a blob and generate a download link
-    const blob = new Blob([fixedLengthText], { type: 'text/plain' });
-    const link = document.getElementById('downloadLink');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'fixed_length_file.txt';
-    link.style.display = 'block';
-    link.innerText = 'Download Fixed Length File';
 }
 
 // Function to handle combobox change

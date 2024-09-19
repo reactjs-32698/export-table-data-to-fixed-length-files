@@ -1,5 +1,5 @@
 // Function to convert table to fixed length file
-import {batch2Columns, batch2Header, batch2Trailer} from "../shared/constants.js";
+import {batch2Columns, batch2Header, batch2Separator, batch2Trailer} from "../shared/constants.js";
 import {padString} from "../shared/shared-functions.js";
 
 export function convertTableToFixedLength() {
@@ -15,10 +15,17 @@ export function convertTableToFixedLength() {
         fixedLengthText += batch2Header[selectedValue] + '\n'
     }
 
+    let separator = '';
+    if (batch2Separator[selectedValue]) {
+        separator = batch2Separator[selectedValue];
+    }
+
     for (let i = 1; i < rows.length; i++) { // Start from 1 to skip the header row
         const inputs = rows[i].getElementsByTagName('input');
         for (let j = 0; j < inputs.length; j++) {
             fixedLengthText += padString(inputs[j].value, columns[j].length);
+            if(j <= inputs.length - 2)
+                fixedLengthText += separator;
         }
         fixedLengthText += '\n';
     }

@@ -10,7 +10,7 @@ export const batch2Header = { // header is optional
 };
 export const batch2Trailer = { // trailer is optional
     'alsUtilization': formatDate(new Date()) + '0000000003000000003150000.00',
-    'tiUtilization': formatDate(new Date()) + '0000000003000000003150000.00',
+    'tiUtilization': '     ~' + formatDate(new Date()) + '~' + '1' + '~' + '4220.00',
     'alsClosedAccount': formatDate(new Date()) + '0000000003000000003150000.00',
     'alsSynchronization':formatDate(new Date()) + '000000000500500.00',
 }
@@ -52,7 +52,7 @@ export const batch2Columns = {
         { name: 'res_customer_id', length: 14, trim: 'both' },
         { name: 'res_facility_id', length: 14 },
         { name: 'res_loan_acno', length: 26 },
-        { name: 'res_tran_status', length: 1 },
+        { name: 'res_tran_status', length: 4 },
         { name: 'res_loan_curr', length: 3 },
         { name: 'res_loan_amt', length: 16 },
         { name: 'res_maker_id', length: 10 },

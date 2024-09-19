@@ -34,6 +34,7 @@ batch2Trailer.set(TI_SYNCHRONIZATION_KEY, '     ' + SEPARATOR_01 + formatDate(ne
 batch2Trailer.set(ALS_UTILIZATION_KEY, formatDate(new Date()) + '  ' + SEPARATOR_02 + '1             ' + SEPARATOR_02 + '000000000500500.00');
 batch2Trailer.set(ALS_SYNCHRONIZATION_KEY, formatDate(new Date()) + '  ' + SEPARATOR_02 + '1             ' + SEPARATOR_02 + '000000000500500.00');
 batch2Trailer.set(ALS_CLOSED_ACCOUNT_KEY, formatDate(new Date()) + '  ' + SEPARATOR_02 + '1             ' + SEPARATOR_02 + '000000000500500.00');
+batch2Trailer.set(ALS_ENDORSER_KEY, formatDate(new Date()) + '  ' + SEPARATOR_02 + '1             ' + SEPARATOR_02 + '000000000500500.00');
 
 // config separator
 export const batch2Separator = new Map();
@@ -42,6 +43,7 @@ batch2Separator.set(TI_SYNCHRONIZATION_KEY, SEPARATOR_01);
 batch2Separator.set(ALS_UTILIZATION_KEY, SEPARATOR_02);
 batch2Separator.set(ALS_SYNCHRONIZATION_KEY, SEPARATOR_02);
 batch2Separator.set(ALS_CLOSED_ACCOUNT_KEY, SEPARATOR_02);
+batch2Separator.set(ALS_ENDORSER_KEY, SEPARATOR_02);
 
 // config columns
 export const batch2Columns = new Map();

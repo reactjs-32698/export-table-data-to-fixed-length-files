@@ -11,8 +11,8 @@ export function convertTableToFixedLength() {
     const table = document.getElementById('dataTable');
     const rows = table.getElementsByTagName('tr');
     let fixedLengthText = '';
-    if (batch2Header[selectedValue]) {
-        fixedLengthText += batch2Header[selectedValue] + '\n'
+    if (batch2Header.get(selectedValue)) {
+        fixedLengthText += batch2Header.get(selectedValue) + '\n'
     }
 
     let separator = '';
@@ -30,8 +30,12 @@ export function convertTableToFixedLength() {
         fixedLengthText += '\n';
     }
 
-    if (batch2Trailer[selectedValue]) {
-        fixedLengthText += batch2Trailer[selectedValue] + '\n';
+    console.log("batch2Trailer: ", batch2Trailer);
+    console.log("selectedValue: ", selectedValue);
+
+    if (batch2Trailer.get(selectedValue)) {
+        console.log("batch2Trailer.get(selectedValue): ", batch2Trailer.get(selectedValue));
+        fixedLengthText += batch2Trailer.get(selectedValue) + '\n';
     }
 
     // Create a blob and generate a download link

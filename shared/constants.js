@@ -1,22 +1,36 @@
 import {formatDate} from "./shared-functions.js";
+import {alsUtilizationTableConfig} from "../table-configs/als_utilization_table_config.js";
+import {tiUtilizationTableConfig} from "../table-configs/ti_utilization_table_config.js";
+import {alsClosedAccountTableConfig} from "../table-configs/als_closed_account_table_config.js";
+import {alsEndorserTableConfig} from "../table-configs/als_endorser_table_config.js";
+import {alsSynchronizationTableConfig} from "../table-configs/als_synchronization_table_config.js";
+import {stimReversalTableConfig} from "../table-configs/stim_reversal_table_config.js";
+import {tiSynchronizationTableConfig} from "../table-configs/ti_synchronization_table_config.js";
 
 export const SEPARATOR_01 = '~';
 export const SEPARATOR_02 = '|';
+export const ALS_UTILIZATION_KEY = "alsUtilization";
+export const TI_UTILIZATION_KEY = "tiUtilization";
+export const ALS_CLOSED_ACCOUNT_KEY = "alsClosedAccount";
+export const ALS_ENDORSER_KEY = "alsEndorser";
+export const ALS_SYNCHRONIZATION_KEY = "alsSynchronization";
+export const STIM_REVERSAL_KEY = "stimReversal";
+export const TI_SYNCHRONIZATION_KEY = "tiSynchronization";
 
-export const batch2Header = { // header is optional
-    'alsUtilization': 'ALSUTIL',
-    'tiUtilization': 'TRUTPUSH',
-    'alsClosedAccount': 'ALSUTIL',
-    'stimReversal':'CASRUTI',
-    'alsSynchronization':'ALPYMT',
-    'alsEndorser':'ALSENDO'
-};
-export const batch2Trailer = { // trailer is optional
-    'alsUtilization': formatDate(new Date()) + SEPARATOR_01 + '1' + SEPARATOR_01 + '000000000500500.00',
-    'tiUtilization': '     ' + SEPARATOR_01 + formatDate(new Date()) + SEPARATOR_01 + '1' + SEPARATOR_01 + '4220.00',
-    'alsClosedAccount': formatDate(new Date()) + '0000000003000000003150000.00',
-    'alsSynchronization':formatDate(new Date()) + '000000000500500.00',
-}
+export const batch2Header = new Map();
+batch2Header.set(ALS_UTILIZATION_KEY, 'ALSUTIL');
+batch2Header.set(TI_UTILIZATION_KEY, 'TRUTPUSH');
+batch2Header.set(ALS_CLOSED_ACCOUNT_KEY, 'ALSUTIL');
+batch2Header.set(STIM_REVERSAL_KEY, 'CASRUTI');
+batch2Header.set(ALS_SYNCHRONIZATION_KEY, 'ALPYMT');
+batch2Header.set(ALS_ENDORSER_KEY, 'ALSENDO');
+
+export const batch2Trailer = new Map();
+batch2Trailer.set(ALS_UTILIZATION_KEY, formatDate(new Date()) + SEPARATOR_01 + '1' + SEPARATOR_01 + '000000000500500.00');
+batch2Trailer.set(TI_UTILIZATION_KEY, '     ' + SEPARATOR_01 + formatDate(new Date()) + SEPARATOR_01 + '1' + SEPARATOR_01 + '4220.00');
+batch2Trailer.set(ALS_CLOSED_ACCOUNT_KEY, formatDate(new Date()) + '0000000003000000003150000.00');
+batch2Trailer.set(ALS_SYNCHRONIZATION_KEY, formatDate(new Date()) + '000000000500500.00');
+
 export const batch2Separator = {
     'tiSynchronization': SEPARATOR_01,
     'tiUtilization': SEPARATOR_01,
@@ -40,81 +54,11 @@ export const batch2Columns = {
         { name: 'Age', length: 5 },
         { name: 'City', length: 15 }
     ],
-    'alsUtilization': [
-        { name: 'res_customer_id', length: 10 },
-        { name: 'res_facility_id', length: 14 },
-        { name: 'res_loan_acno', length: 26 },
-        { name: 'res_tran_status', length: 4 },
-        { name: 'res_loan_curr', length: 3 },
-        { name: 'res_loan_amt', length: 16 },
-        { name: 'res_maker_id', length: 10 },
-        { name: 'res_checker_id', length: 10 },
-        { name: 'res_earref_no', length: 16 }
-    ],
-    'tiUtilization': [
-        { name: 'res_system_id', length: 5 },
-        { name: 'res_customer_id', length: 14, trim: 'both' },
-        { name: 'res_facility_id', length: 14 },
-        { name: 'res_loan_acno', length: 26 },
-        { name: 'res_tran_status', length: 4 },
-        { name: 'res_loan_curr', length: 3 },
-        { name: 'res_loan_amt', length: 16 },
-        { name: 'res_maker_id', length: 10 },
-        { name: 'res_checker_id', length: 10 },
-        { name: 'res_earref_no', length: 16, null_if_blanks: true, trim: 'both' }
-    ],
-    'alsClosedAccount': [
-        { name: 'res_customer_id', length: 14, trim: 'both' },
-        { name: 'res_facility_id', length: 14, trim: 'both' },
-        { name: 'res_loan_acno', length: 26 },
-        { name: 'res_tran_status', length: 1 },
-        { name: 'res_loan_curr', length: 3 },
-        { name: 'res_loan_amt', length: 16 },
-        { name: 'res_maker_id', length: 10 },
-        { name: 'res_checker_id', length: 10 },
-        { name: 'res_earref_no', length: 16, null_if_blanks: true, trim: 'both' }
-    ],
-    'alsEndorser':[
-        {'name': 'res_customer_id', 'length': 10},
-        {'name': 'res_facility_id', 'length': 14},
-        {'name': 'res_loan_acno', 'length': 26},
-        {'name': 'res_limit_amt', 'length': 16},
-        {'name': 'res_coborrower_cif', 'length': 10},
-        {'name': 'currency', 'length': 3}
-    ],
-    'alsSynchronization':[
-        {'name':'customer_id','length':10},
-        {'name':'res_facility_id','length':14},
-        {'name':'res_loan_acno','length':26},
-        {'name':'res_loan_amt','length':16},
-        {'name':'res_loan_curr','length':3},
-        {'name':'loan_accrual_status','length':2}
-    ],
-    'stimReversal':[
-        {'name':'res_system_id','length':10},
-        {'name':'res_customer_id','length':10},
-        {'name':'res_bocif_no','length':10},
-        {'name':'res_loan_no','length':26},
-        {'name':'res_counter_cif','length':10},
-        {'name':'res_facility_id','length':14},
-        {'name':'res_amount_value','length':15},
-        {'name':'res_currency','length':3},
-        {'name':'res_tran_date','length':8},
-        {'name':'res_unblock_dt','length':8},
-        {'name':'res_debit_credit_flg','length':1},
-        {'name':'res_facility_cd','length':10},
-        {'name':'res_tran_ref_no','length':16},
-        {'name':'res_status','length':1},
-        {'name':'res_branch','length':20}
-    ],
-    'tiSynchronization': [
-        { name: 'res_system_id', label: 'System ID', default: 'TRADE', type: 'String', length: 5 },
-        { name: 'res_customer_id', label: 'Customer ID', type: 'String', length: 14 },
-        { name: 'res_facility_id', label: 'Facility ID', type: 'String', length: 14 },
-        { name: 'res_loan_acno', label: 'Loan Account Number', type: 'Numeric', length: 26 },
-        { name: 'res_prin_amt', label: 'Principal OS', type: 'Numeric', length: 16, sample: '0000000500500.00' },
-        { name: '_', length:30, invisible: true, value: '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'},
-        { name: 'res_currency_cd', label: 'Currency Code', type: 'String', length: 3 },
-        { name: 'res_loan_status', length: 2}
-    ]
+    'alsUtilization': alsUtilizationTableConfig,
+    'tiUtilization': tiUtilizationTableConfig,
+    'alsClosedAccount': alsClosedAccountTableConfig,
+    'alsEndorser': alsEndorserTableConfig,
+    'alsSynchronization': alsSynchronizationTableConfig,
+    'stimReversal': stimReversalTableConfig,
+    'tiSynchronization': tiSynchronizationTableConfig
 };

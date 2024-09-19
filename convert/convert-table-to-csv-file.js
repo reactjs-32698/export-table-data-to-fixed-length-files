@@ -7,8 +7,8 @@ export function convertTableToCSV() {
     const table = document.getElementById('dataTable');
     const rows = table.getElementsByTagName('tr');
     let csvText = '';
-    if (batch2Header[selectedValue]) {
-        csvText += batch2Header[selectedValue] + '\n'
+    if (batch2Header.get(selectedValue)) {
+        csvText += batch2Header.get(selectedValue) + '\n'
     }
 
     for (let i = 1; i < rows.length; i++) { // Start from 1 to skip the header row

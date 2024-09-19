@@ -1,6 +1,6 @@
 export const alsClosedAccountTableConfig = [
-    { name: 'res_customer_id', length: 14, trim: 'both' },
-    { name: 'res_facility_id', length: 14, trim: 'both' },
+    { name: 'res_customer_id', length: 10 },
+    { name: 'res_facility_id', length: 14 },
     { name: 'res_loan_acno', length: 26 },
     { name: 'res_tran_status', length: 1 },
     { name: 'res_loan_curr', length: 3 },

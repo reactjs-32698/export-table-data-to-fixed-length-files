@@ -8,7 +8,7 @@ import {stimReversalTableConfig} from "../table-configs/stim_reversal_table_conf
 import {tiSynchronizationTableConfig} from "../table-configs/ti_synchronization_table_config.js";
 
 export const SEPARATOR_01 = '~';
-export const SEPARATOR_02 = '|';
+export const SEPARATOR_02 = '';
 export const ALS_UTILIZATION_KEY = "alsUtilization";
 export const TI_UTILIZATION_KEY = "tiUtilization";
 export const ALS_CLOSED_ACCOUNT_KEY = "alsClosedAccount";
@@ -28,7 +28,7 @@ batch2Header.set(ALS_ENDORSER_KEY, 'ALSENDO');
 
 // config trailer file
 export const batch2Trailer = new Map();
-batch2Trailer.set(ALS_UTILIZATION_KEY, formatDate(new Date()) + SEPARATOR_01 + '1' + SEPARATOR_01 + '000000000500500.00');
+batch2Trailer.set(ALS_UTILIZATION_KEY, formatDate(new Date()) + '  ' + SEPARATOR_02 + '1             ' + SEPARATOR_02 + '000000000500500.00');
 batch2Trailer.set(TI_UTILIZATION_KEY, '     ' + SEPARATOR_01 + formatDate(new Date()) + SEPARATOR_01 + '1' + SEPARATOR_01 + '4220.00');
 batch2Trailer.set(ALS_CLOSED_ACCOUNT_KEY, formatDate(new Date()) + '0000000003000000003150000.00');
 batch2Trailer.set(ALS_SYNCHRONIZATION_KEY, formatDate(new Date()) + '000000000500500.00');

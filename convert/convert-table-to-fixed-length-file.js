@@ -6,7 +6,7 @@ export function convertTableToFixedLength() {
 
     const comboBox = document.getElementById('comboBox');
     const selectedValue = comboBox.value;
-    let columns = batch2Columns[selectedValue];
+    let columns = batch2Columns.get(selectedValue);
 
     const table = document.getElementById('dataTable');
     const rows = table.getElementsByTagName('tr');
@@ -16,8 +16,8 @@ export function convertTableToFixedLength() {
     }
 
     let separator = '';
-    if (batch2Separator[selectedValue]) {
-        separator = batch2Separator[selectedValue];
+    if (batch2Separator.get(selectedValue)) {
+        separator = batch2Separator.get(selectedValue);
     }
 
     for (let i = 1; i < rows.length; i++) { // Start from 1 to skip the header row
@@ -30,11 +30,7 @@ export function convertTableToFixedLength() {
         fixedLengthText += '\n';
     }
 
-    console.log("batch2Trailer: ", batch2Trailer);
-    console.log("selectedValue: ", selectedValue);
-
     if (batch2Trailer.get(selectedValue)) {
-        console.log("batch2Trailer.get(selectedValue): ", batch2Trailer.get(selectedValue));
         fixedLengthText += batch2Trailer.get(selectedValue) + '\n';
     }
 

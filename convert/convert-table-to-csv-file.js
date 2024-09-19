@@ -14,7 +14,7 @@ export function convertTableToCSV() {
     for (let i = 1; i < rows.length; i++) { // Start from 1 to skip the header row
         const inputs = rows[i].getElementsByTagName('input');
         for (let j = 0; j < inputs.length; j++) {
-            csvText += inputs[j].value + batch2Separator[selectedValue] || '~';
+            csvText += inputs[j].value + batch2Separator.get(selectedValue) || '~';
         }
         csvText = csvText.substring(0, csvText.length - 1);
         csvText += '\n';

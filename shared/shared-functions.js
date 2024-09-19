@@ -18,7 +18,7 @@ export function addRow(data = []) {
     const newRow = tableBody.insertRow();
     const comboBox = document.getElementById('comboBox');
     const selectedValue = comboBox.value;
-    let columns = batch2Columns[selectedValue];
+    let columns = batch2Columns.get(selectedValue);
 
     columns.forEach((col, index) => {
         const newCell = newRow.insertCell();

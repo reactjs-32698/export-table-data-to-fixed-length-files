@@ -4,7 +4,7 @@ import {addRow} from "../shared/shared-functions.js";
 export function handleCreateTable() {
     const comboBox = document.getElementById('comboBox');
     const selectedValue = comboBox.value;
-    let columns = batch2Columns[selectedValue];
+    let columns = batch2Columns.get(selectedValue);
     const headerRow = document.getElementById('tableHeader');
     headerRow.innerHTML = '';
     const tableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0]
@@ -22,9 +22,4 @@ export function handleCreateTable() {
     ];
 
     defaultRows.forEach(rowData => addRow(rowData));
-}
-
-// Function to handle combobox change
-export function handleComboBoxChange() {
-    handleCreateTable();
 }

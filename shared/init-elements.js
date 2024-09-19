@@ -15,7 +15,7 @@ export function initializeSelectBox() {
 
 // Function to initialize table header based on columns array
 export function initializeTable() {
-    let columns = batch2Columns[''];
+    let columns = batch2Columns.get('');
     const headerRow = document.getElementById('tableHeader');
     headerRow.innerHTML = '';
     const tableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0]

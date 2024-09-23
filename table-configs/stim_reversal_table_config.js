@@ -1,9 +1,9 @@
 export const stimReversalTableConfig = [
     {'name':'res_system_id','length':10},
-    {'name':'res_customer_id','length':10},
-    {'name':'res_bocif_no','length':10},
+    {'name':'res_customer_id','length':14},
+    {'name':'res_bocif_no','length':14},
     {'name':'res_loan_no','length':26},
-    {'name':'res_counter_cif','length':10},
+    {'name':'res_counter_cif','length':14},
     {'name':'res_facility_id','length':14},
     {'name':'res_amount_value','length':15},
     {'name':'res_currency','length':3},

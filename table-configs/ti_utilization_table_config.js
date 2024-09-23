@@ -1,5 +1,6 @@
 export const tiUtilizationTableConfig = [
-    { name: 'res_customer_id', length: 10 },
+    { name: 'res_system_id', length: 5 },
+    { name: 'res_customer_id', length: 14 },
     { name: 'res_facility_id', length: 14 },
     { name: 'res_loan_acno', length: 26 },
     { name: 'res_tran_status', length: 4 },

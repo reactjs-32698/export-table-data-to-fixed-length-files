@@ -31,11 +31,11 @@ batch2Header.set(STIM_REVERSAL_KEY, 'CASRUTI');
 export const batch2Trailer = new Map();
 batch2Trailer.set(TI_UTILIZATION_KEY, ' '.repeat(5) + SEPARATOR_01 + formatDate(new Date()) + SEPARATOR_01 + '1' + SEPARATOR_01 + '4220.00');
 batch2Trailer.set(TI_SYNCHRONIZATION_KEY, ' '.repeat(5) + SEPARATOR_01 + formatDate(new Date()) + SEPARATOR_01 + '1' + SEPARATOR_01 + '4220.00');
-batch2Trailer.set(ALS_UTILIZATION_KEY, formatDate(new Date()) + ' '.repeat(6) + SEPARATOR_02 + '1' + ' '.repeat(13) + SEPARATOR_02 + '000000000500500.00');
-batch2Trailer.set(ALS_SYNCHRONIZATION_KEY, formatDate(new Date()) + ' '.repeat(6) + SEPARATOR_02 + '1' + ' '.repeat(13) + SEPARATOR_02 + '000000000500500.00');
-batch2Trailer.set(ALS_CLOSED_ACCOUNT_KEY, formatDate(new Date()) + ' '.repeat(6) + SEPARATOR_02 + '1' + ' '.repeat(13) + SEPARATOR_02 + '000000000500500.00');
-batch2Trailer.set(ALS_ENDORSER_KEY, formatDate(new Date()) + ' '.repeat(6) + SEPARATOR_02 + '1' + ' '.repeat(13) + SEPARATOR_02 + '000000000500500.00');
-batch2Trailer.set(STIM_REVERSAL_KEY, formatDate(new Date()) + ' '.repeat(2) + SEPARATOR_02 + '1' + ' '.repeat(13) + SEPARATOR_02 + ' '.repeat(14) + SEPARATOR_02 + '000000000500500.00');
+batch2Trailer.set(ALS_UTILIZATION_KEY, formatDate(new Date()) + ' '.repeat(2) + SEPARATOR_02 + '1' + ' '.repeat(13) + SEPARATOR_02 + '000000000500500.00');
+batch2Trailer.set(ALS_SYNCHRONIZATION_KEY, formatDate(new Date()) + ' '.repeat(2) + SEPARATOR_02 + '1' + ' '.repeat(13) + SEPARATOR_02 + '000000000500500.00');
+batch2Trailer.set(ALS_CLOSED_ACCOUNT_KEY, formatDate(new Date()) + ' '.repeat(2) + SEPARATOR_02 + '1' + ' '.repeat(13) + SEPARATOR_02 + '000000000500500.00');
+batch2Trailer.set(ALS_ENDORSER_KEY, formatDate(new Date()) + ' '.repeat(2) + SEPARATOR_02 + '1' + ' '.repeat(13) + SEPARATOR_02 + '000000000500500.00');
+batch2Trailer.set(STIM_REVERSAL_KEY, formatDate(new Date()) + ' '.repeat(2) + SEPARATOR_02 + '1' + ' '.repeat(9) + SEPARATOR_02 + ' '.repeat(10) + SEPARATOR_02 + '000000000500500.00');
 
 // config separator
 export const batch2Separator = new Map();

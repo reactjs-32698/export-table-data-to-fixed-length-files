@@ -1,5 +1,5 @@
 export const alsSynchronizationTableConfig =[
-    {'name':'customer_id','length':14},
+    {'name':'customer_id','length':10},
     {'name':'res_facility_id','length':14},
     {'name':'res_loan_acno','length':26},
     {'name':'res_loan_amt','length':16},

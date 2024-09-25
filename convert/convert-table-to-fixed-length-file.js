@@ -23,8 +23,14 @@ export function convertTableToFixedLength() {
     for (let i = 1; i < rows.length; i++) { // Start from 1 to skip the header row
         const inputs = rows[i].getElementsByTagName('input');
         for (let j = 0; j < inputs.length; j++) {
-            if(inputs[j].value && inputs[j].value.trim())
+
+            if(columns[j].source === 'TI') {
+                if(inputs[j].value && inputs[j].value.trim())
+                    fixedLengthText += padString(inputs[j].value, columns[j].length);
+            } else {
                 fixedLengthText += padString(inputs[j].value, columns[j].length);
+            }
+
             if(j <= inputs.length - 2)
                 fixedLengthText += separator;
         }

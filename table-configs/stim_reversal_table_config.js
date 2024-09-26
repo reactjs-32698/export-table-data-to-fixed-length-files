@@ -5,7 +5,7 @@ export const stimReversalTableConfig = [
     {'name':'res_loan_no','length':26},
     {'name':'res_counter_cif','length':10},
     {'name':'res_facility_id','length':14},
-    {'name':'res_amount_value','length':15},
+    {'name':'res_amount_value','length':18},
     {'name':'res_currency','length':3},
     {'name':'res_tran_date','length':8},
     {'name':'res_unblock_dt','length':8},
